@@ -1,19 +1,16 @@
-from sklearn import metrics, svm, datasets, utils, model_selection
 import time
-import bitmap_handler
+from sklearn import metrics, svm, datasets, utils, model_selection
+from helpers import bitmap_handler
 
 
-def run(test_size: float = .2):
+def linear_svm(test_size: float = .2):
     start_time = time.time()
 
-    mnist = datasets.fetch_mldata('MNIST original', data_home='./')
+    mnist = datasets.fetch_mldata('MNIST original', data_home='./data')
     print("Fetched %d rows." % len(mnist.target))
 
     print("Shuffle data set")
     mnist.data, mnist.target = utils.shuffle(mnist.data, mnist.target)
-
-    print(mnist.data[0])
-    print(mnist.target[0])
 
     print("Split into training set and test/validation set (test_size: %.1f %%)" % (test_size * 100))
     x_train, x_test, y_train, y_test = model_selection.train_test_split(mnist.data, mnist.target, test_size=test_size)
@@ -36,7 +33,3 @@ def run(test_size: float = .2):
     print("Overall running time: %d min. %d sec." % (m, s))
 
     bitmap_handler.compare(x_test, prediction, y_test)
-
-
-if __name__ == "__main__":
-    run()
