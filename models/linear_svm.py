@@ -4,6 +4,12 @@ from helpers import bitmap_handler
 
 
 def linear_svm(test_size: float = .2):
+    """
+    Uses SVM with a linear kernel to predict the MNIST set. LinearSVC uses the one-vs-rest multi-class strategy.
+
+    :param test_size: float
+        Scale of test size used in this case.
+    """
     start_time = time.time()
 
     mnist = datasets.fetch_mldata('MNIST original', data_home='./data')
@@ -32,4 +38,4 @@ def linear_svm(test_size: float = .2):
     m, s = divmod(time.time() - start_time, 60)
     print("Overall running time: %d min. %d sec." % (m, s))
 
-    bitmap_handler.compare(x_test, prediction, y_test)
+    bitmap_handler.compare_results(x_test, prediction, y_test)
