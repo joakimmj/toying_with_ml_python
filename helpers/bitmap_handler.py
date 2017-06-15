@@ -23,7 +23,7 @@ def print_bitmap(bitmap: iter, width: int = 28, height: int = 28):
     plt.show()
 
 
-def compare_results(bitmaps: iter, prediction: iter, labels: iter):
+def compare_wrong_results(bitmaps: iter, prediction: iter, labels: iter):
     """
     Plots list of bitmaps.
 

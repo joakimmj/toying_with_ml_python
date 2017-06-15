@@ -38,4 +38,4 @@ def linear_svm(test_size: float = .2):
     m, s = divmod(time.time() - start_time, 60)
     print("Overall running time: %d min. %d sec." % (m, s))
 
-    bitmap_handler.compare_results(x_test, prediction, y_test)
+    bitmap_handler.compare_wrong_results(x_test, prediction, y_test)
